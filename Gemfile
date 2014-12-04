@@ -2,7 +2,11 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "mail"
+gem "unf"
+gem "mail", "2.4.4"
 
 group :development, :test do
+  gem "rake"
+  gem "bundler"
+  gem "activesupport", "3.2.12"
 end

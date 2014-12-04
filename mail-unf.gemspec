@@ -16,8 +16,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "mail", ">= 2.2.6", "<= 2.6.1"
   s.add_dependency "unf", ">= 0.1.0"
-  s.add_development_dependency "actionmailer", ">= 3.0.0"
-  s.add_development_dependency "rdoc", ">= 3.12"
 
-  s.files = %w(README.md Gemfile) + Dir.glob("lib/**/*")
+  s.files = %w(README.md Gemfile Rakefile) + Dir.glob("lib/**/*")
 end
