@@ -9,4 +9,5 @@ group :development, :test do
   gem "rake"
   gem "bundler"
   gem "activesupport", "3.2.12"
+  gem "mail-iso-2022-jp", "1.2.0"
 end

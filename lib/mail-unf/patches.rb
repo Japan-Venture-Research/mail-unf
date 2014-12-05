@@ -13,13 +13,15 @@ module Mail
   end
 
   module FieldWithUnf
+    ENCODINGS = %w(utf-8 iso-2022-jp)
+
     def self.included(base)
       base.send :alias_method, :initialize_without_unf, :initialize
       base.send :alias_method, :initialize, :initialize_with_unf
     end
 
     def initialize_with_unf(value = nil, charset = 'utf-8')
-      if charset.to_s.downcase == 'utf-8'
+      if ENCODINGS.include? charset.to_s.downcase
         if value.kind_of?(Array)
           value = value.map { |e| convert_with_unf(e, charset) }
         else
@@ -32,7 +34,7 @@ module Mail
     private
 
     def convert_with_unf value, charset
-      if charset.to_s.downcase == 'utf-8'
+      if ENCODINGS.include? charset.to_s.downcase
         value = value.to_s.to_nfc
       end
       value
@@ -48,6 +50,10 @@ module Mail
   end
 
   class SenderField < StructuredField
+    include FieldWithUnf
+  end
+
+  class ToField < StructuredField
     include FieldWithUnf
   end
 end
