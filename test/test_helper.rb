@@ -5,6 +5,8 @@ require 'minitest/autorun'
 require 'nkf'
 require 'unf'
 require 'mail'
+
+# NOTE: requiring order is important
 require 'mail-iso-2022-jp'
 require 'mail-unf'
 

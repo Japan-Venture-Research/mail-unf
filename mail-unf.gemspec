@@ -8,13 +8,13 @@ Gem::Specification.new do |s|
   s.authors     = ["Yuki KODAMA"]
   s.email       = ["kodama@jvr.jp"]
   s.homepage    = "https://github.com/Japan-Venture-Research/mail-unf"
-  s.description = ""
-  s.summary     = ""
+  s.description = "Normalizes utf-8 strings in a message (mail gem) into NFC using Unicode Normalization Form."
+  s.summary     = "Normalizes utf-8 strings in a message (mail gem) into NFC using Unicode Normalization Form."
   s.license     = "MIT"
 
-  s.required_ruby_version = ">= 1.9.2"
+  s.required_ruby_version = ">= 1.9.3"
 
-  s.add_dependency "mail", ">= 2.2.6", "<= 2.6.1"
+  s.add_dependency "mail", ">= 2.5.4", "<= 2.6.3"
   s.add_dependency "unf", ">= 0.1.0"
 
   s.files = %w(README.md Gemfile Rakefile) + Dir.glob("lib/**/*")

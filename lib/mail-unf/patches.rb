@@ -13,15 +13,13 @@ module Mail
   end
 
   module FieldWithUnf
-    ENCODINGS = %w(utf-8 iso-2022-jp)
-
     def self.included(base)
       base.send :alias_method, :initialize_without_unf, :initialize
       base.send :alias_method, :initialize, :initialize_with_unf
     end
 
     def initialize_with_unf(value = nil, charset = 'utf-8')
-      if ENCODINGS.include? charset.to_s.downcase
+      unless charset.to_s.downcase == 'ascii-8bit'
         if value.kind_of?(Array)
           value = value.map { |e| convert_with_unf(e, charset) }
         else
@@ -34,7 +32,7 @@ module Mail
     private
 
     def convert_with_unf value, charset
-      if ENCODINGS.include? charset.to_s.downcase
+      unless charset.to_s.downcase == 'ascii-8bit'
         value = value.to_s.to_nfc
       end
       value
